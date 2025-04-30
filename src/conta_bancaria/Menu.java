@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import conta_bancaria.util.Cores;
-import conta_model.util.Conta;
 import conta_model.util.ContaCorrente;
 import conta_model.util.ContaPoupanca;
 
@@ -13,22 +12,6 @@ public class Menu {
         Scanner leia = new Scanner(System.in);
         int opcao;
 
-     // Criar (instanciar) um Objeto da Classe Conta
-     		Conta c1 = new Conta(1, 123, 1, "Junior", 500000);
-     		c1.visualizar();
-     		
-     		// Sacar
-     		c1.sacar(100);
-     		c1.visualizar();
-
-     		// Depositar
-     		c1.depositar(1000);
-     		c1.visualizar();
-     		
-     		// Alterar a propriedade titular
-     		c1.setTitular("Junior Reis");
-     		c1.visualizar();
-     		
      		ContaCorrente cc1 = new ContaCorrente(2,456,1,"Renata Negrini",60000,6000);
      		cc1.visualizar();
      		
