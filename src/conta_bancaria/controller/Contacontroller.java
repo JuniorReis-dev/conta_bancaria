@@ -1,26 +1,40 @@
 package conta_bancaria.controller;
 
+import java.util.ArrayList;
+
 import conta_bancaria.repository.ContaRepository;
 import conta_model.util.Conta;
 
 public class Contacontroller implements ContaRepository {
 
+	private ArrayList <Conta> listaConta = new ArrayList <Conta>();
+
+	int numero = 0;
+	
 	@Override
 	public void procuraPorNumero(int numero) {
-		// TODO Auto-generated method stub
+		var conta = buscarNaCollection(numero);
+		
+		if (conta != null ) {
+			conta.visualizar();
+		}
+		else {
+			System.out.printf("\nA conta numero %d Não foi encontrada!",numero);
+		}
 		
 	}
 
 	@Override
 	public void listarTodas() {
-		// TODO Auto-generated method stub
-		
+		for (var conta : listaConta) {
+			conta.visualizar();
+			}
 	}
 
 	@Override
 	public void cadastrar(Conta conta) {
-		// TODO Auto-generated method stub
-		
+		listaConta.add(conta);
+		System.out.println("A Conta foi criado com sucesso!");
 	}
 
 	@Override
@@ -52,5 +66,17 @@ public class Contacontroller implements ContaRepository {
 		// TODO Auto-generated method stub
 		
 	}
-		
+	
+	// metodos auxiliares
+	public int gerarNumero() {
+		return ++ numero;
+	}
+	
+	public Conta buscarNaCollection(int numero) {
+		for(var conta : listaConta) {
+			if(conta.getNumero() == numero)
+				return conta;
+		}
+		return null;
+	}
 }

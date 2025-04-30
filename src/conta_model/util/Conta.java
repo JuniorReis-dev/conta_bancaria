@@ -2,8 +2,7 @@ package conta_model.util;
 
 import java.text.NumberFormat;
 
-public class Conta {
-	
+public abstract class Conta { 	
 	// Atributos da Classe
 		private int numero;
 		private int agencia;
