@@ -14,9 +14,9 @@ public class Menu {
 	public static void main(String[] args) {
 		Scanner leia = new Scanner(System.in);
 		Contacontroller contas = new Contacontroller();
-		int opcao, numero, agencia, tipo = 0, aniversario;
+		int opcao, numero, agencia, tipo = 0, aniversario,numeroDestino;
 		String titular;
-		float saldo, limite;
+		float saldo, limite,valor;
 
 		ContaCorrente cc1 = new ContaCorrente(contas.gerarNumero(), 123, 1, "João da Silva", 1000.00f, 100.00f);
 		contas.cadastrar(cc1);
@@ -140,24 +140,47 @@ public class Menu {
 					System.out.printf("\n A conta número %d não existe!", numero);
 				keyPress();
 				break;
-			case 5:
-				System.out.println("Apagar Conta\n");
-				System.out.println("Digite o numero da conta");
-				numero = leia.nextInt();
-				contas.deletar(numero);
-				keyPress();
-				break;
 			case 6:
+				System.out.println(Cores.TEXT_WHITE + "Saque\n\n");
+
+				System.out.println("Digite o número da conta: ");
+				numero = leia.nextInt();
+				
+				System.out.println("Digite o valor do saque: ");
+				valor = leia.nextFloat();
+				
+				contas.sacar(numero, valor);
+				
 				keyPress();
-				System.out.println("Sacar\n");
 				break;
 			case 7:
+				System.out.println(Cores.TEXT_WHITE + "Depósito\n\n");
+
+				System.out.println("Digite o número da conta: ");
+				numero = leia.nextInt();
+				
+				System.out.println("Digite o valor do depósito: ");
+				valor = leia.nextFloat();
+				
+				contas.depositar(numero, valor);
+				
 				keyPress();
-				System.out.println("Depositar\n");
 				break;
 			case 8:
+				System.out.println(Cores.TEXT_WHITE + "Transferência entre Contas\n\n");
+
+				System.out.println("Digite o número da conta de origem: ");
+				numero = leia.nextInt();
+				
+				System.out.println("Digite o número da conta de destino: ");
+				numeroDestino = leia.nextInt();
+				
+				System.out.println("Digite o valor do depósito: ");
+				valor = leia.nextFloat();
+				
+				contas.transferir(numero, numeroDestino, valor);
+				
 				keyPress();
-				System.out.println("Transferir valores entre Contas\n");
 				break;
 			default:
 				keyPress();
