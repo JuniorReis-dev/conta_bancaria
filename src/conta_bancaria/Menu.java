@@ -39,7 +39,8 @@ public class Menu {
 			System.out.println("            6 - Sacar                                ");
 			System.out.println("            7 - Depositar                            ");
 			System.out.println("            8 - Transferir valores entre Contas      ");
-			System.out.println("            9 - Sair                                 ");
+			System.out.println("            9 - listar por titulares                 ");
+			System.out.println("            0 - encerrar o Programa                  ");
 			System.out.println("                                                     ");
 			System.out.println("*****************************************************");
 			System.out.println("                                                     ");
@@ -48,12 +49,6 @@ public class Menu {
 
 			opcao = leia.nextInt();
 
-			if (opcao == 9) {
-				System.out.println(Cores.TEXT_WHITE_BOLD + "\nBanco do Brazil com Z - O seu Futuro começa aqui!");
-				sobre();
-				leia.close();
-				System.exit(0);
-			}
 
 			switch (opcao) {
 			case 1:
@@ -140,6 +135,16 @@ public class Menu {
 					System.out.printf("\n A conta número %d não existe!", numero);
 				keyPress();
 				break;
+			case 5:
+				System.out.println(Cores.TEXT_WHITE + "Apagar a Conta\n\n");
+
+				System.out.println("Digite o número da conta: ");
+				numero = leia.nextInt();
+				
+				contas.deletar(numero);
+				
+				keyPress();
+				break;
 			case 6:
 				System.out.println(Cores.TEXT_WHITE + "Saque\n\n");
 
@@ -181,6 +186,21 @@ public class Menu {
 				contas.transferir(numero, numeroDestino, valor);
 				
 				keyPress();
+				break;
+				
+			case 9:
+				System.out.println(Cores.TEXT_WHITE + "Consultar contas por titular\n");
+            	System.out.println("Digite o nome do titular: ");
+            	leia.skip("\\R");
+            	titular = leia.nextLine();
+            	contas.listarPorTitular(titular);
+            	keyPress();
+            	break;
+			case 0:	
+				System.out.println(Cores.TEXT_WHITE_BOLD + "\nBanco do Brazil com Z - O seu Futuro começa aqui!");
+				sobre();
+				leia.close();
+				System.exit(0);
 				break;
 			default:
 				keyPress();
